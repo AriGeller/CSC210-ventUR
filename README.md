@@ -1,3 +1,3 @@
 # CSC210-ventUR
 
-Yo, this is a stupid readme.
+Yo, this is a stupider readme.
