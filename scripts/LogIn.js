@@ -10,14 +10,6 @@ $(document).ready(function() {
 
 function setup() {
 
-
-	document.getElementById("Log In").onclick = function() {
-		console.log("You clicked log in.")
-		var username = $('#Username').val();
-		
-        
-	};
-
 	document.getElementById("Sign Up").onclick = function() {
 		console.log("You clicked sign up");
 
