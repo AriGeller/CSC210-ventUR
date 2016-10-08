@@ -1,3 +1,3 @@
 # CSC210-ventUR
 
-Yo, this is a stupidererer readme.
+Idk why it committed all of those files I only changed like two things oops
