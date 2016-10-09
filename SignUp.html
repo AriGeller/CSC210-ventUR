@@ -4,21 +4,25 @@
         <!-- load jQuery -->
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         
-        <!-- influde JS -->
-        <script type = text/javascript src= "scripts/LogIn.js"></script>
-        
+        <script src="scripts/Validate.js"></script>
+         
         <link rel="stylesheet" type="text/css" href="custom.css">
     </head>  
     <body> 
         <h1>Thank You for Signing Up to +ventUR</h1>
-        <form>
+        <form name="SIGNUP" id="form" method="post" action=index.html>
             <br>
             <p> 
                 <label for="FirstName">First Name:</label>
-                <input id ="FirstName" type="text" placeholder="John" required>
+                <input id ="FirstName" type="text" placeholder="John" required><BR/>
                 <label for="LastName">Last Name:</label>
                 <input id ="LastName" type="text" placeholder="Doe" required>
+               
             </p> 
+            <p>
+                <label for="Username"> Username:</label> 
+                <input id-="Username" type="text" placeholder="JohnDoe35" required>
+            </p>
             <p> 
                 <label for="email">E-Mail:</label>
                 <input id ="email" type="email" required>
@@ -31,7 +35,7 @@
                  <label for="Re-Password">Please Re-type your Password:</label>
                 <input id ="Re-Password" type="password" pattern=".{4,15}" required title="4 to 15 characters">
             </p>
-            <button name="SubmitSignup" id="submit" type=button>Submit</button>
+            <button name="SubmitSignup" id="submit" type=submit>Submit</button>
         </form>
     </body>
 </html>    
