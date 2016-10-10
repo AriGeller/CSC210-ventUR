@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
-import cgi
-import cgitb
 import sqlite3
+import binascii, hashlib, os
 
-cgitb.enable()
-
+salt = os.urandom()
+dk = hashlib.pbkdf2_hmac('sha256', b'password', b'salt', 512000)
+binascii.hexlify(dk)
