@@ -4,8 +4,37 @@ $(document).ready(function() {
     console.log("Script loaded...");
    $('#form').submit(function(e) {
         console.log("Test");
-        check(e);
+        if(check(e)){
+            addAcc();
+        }
     });
+   $('#Username').blur(function() {
+
+        $uname = $('#Username').val();
+        if($uname.length > 0) {
+            
+
+          $.ajax() {
+              url: '../cgi-bin/checkuser.py',
+
+             data: {
+                 username: $uname 
+            },
+                
+            type: "post",
+            
+            dataType: "json",
+            
+            success: function(data) {
+                
+            }
+                
+            
+          }
+      }
+
+    });
+    
 });
 
 
@@ -16,6 +45,17 @@ var check = function(e){
         alert("Your passwords do not match. Please try again.")
         $('submit').empty();
         e.preventDefault()
+        return false;
+    } else {
+        return true;
     }
     
 }
+
+//var addAcc = function() {
+
+  //  $.ajax() {
+      //  url: 
+    //}
+
+//}
