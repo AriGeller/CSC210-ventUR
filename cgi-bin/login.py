@@ -3,6 +3,8 @@
 import sqlite3
 import binascii, hashlib, os
 
-salt = os.urandom()
+conn = sqlite3.connect('users.db')
+c = conn.cursor()
+
 dk = hashlib.pbkdf2_hmac('sha256', b'password', b'salt', 512000)
 binascii.hexlify(dk)
