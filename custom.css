@@ -3,6 +3,10 @@ h1 {
     background-color:#0d00a3;
 }
 
-#error {
-    color: red;
+#checkOK {
+    color: greenyellow;
+}
+
+#checkBad {
+    color: red
 }

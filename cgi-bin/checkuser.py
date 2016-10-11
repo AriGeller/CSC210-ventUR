@@ -2,6 +2,10 @@
 
 import cgi
 import sqlite3
+import json
+import cgitb
+
+cgitb.enable()
 
 form = cgi.FieldStorage()
 username = form['Username'].value
@@ -9,4 +13,9 @@ username = form['Username'].value
 conn = sqlite3.connect('users.db')
 c = conn.cursor()
 
-dbuser = c.execute('SELECT user FROM users WHERE username = ?', (username,))
+data = {}
+
+for user in c.execute('SELECT user FROM users WHERE username = ?', (username,)):
+	data['name'] = user[0];
+
+print json.dumps(data);

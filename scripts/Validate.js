@@ -1,10 +1,12 @@
 //**Validate.js**//
 
+var isValidUserName = true;
+
 $(document).ready(function() {
     console.log("Script loaded...");
    $('#form').submit(function(e) {
         console.log("Test");
-        if(check(e)){
+        if(check(e) && isValidUserName){
             addAcc();
         }
     });
@@ -14,7 +16,7 @@ $(document).ready(function() {
         if($uname.length > 0) {
             
 
-          $.ajax() {
+          $.ajax({
               url: '../cgi-bin/checkuser.py',
 
              data: {
@@ -26,11 +28,21 @@ $(document).ready(function() {
             dataType: "json",
             
             success: function(data) {
-                
+                isValidUserName = false;
+                $('#checkOK').empty();
+                $('#checkBad').html("That username is already taken.")
+            },
+            
+            error: function() {
+                isValidUserName = true;
+                $('#checkOK').html("Your chosen username is available!");
+                $('#checkBad').empty();
             }
+            
+    
                 
             
-          }
+          });
       }
 
     });
