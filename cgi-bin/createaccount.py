@@ -21,7 +21,7 @@ password = form['Password'].value
 conn = sqlite3.connect('users.db')
 c = conn.cursor()
 
-salt = os.urandom(100)
+salt = os.urandom(128)
 dk = binascii.hexlify(hashlib.pbkdf2_hmac('sha256', b'password', b'salt', 512000))
 
 c.execute('INSERT INTO users VALUES (?,?,?,?,?,?)', (username, email, dk, firstname, lastname, salt))

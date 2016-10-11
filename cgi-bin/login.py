@@ -15,7 +15,7 @@ password = form['Password'].value
 conn = sqlite3.connect('users.db')
 c = conn.cursor()
 
-#TODO 'Remember me' checkbox
+#TODO 'Remember me' checkbox, captcha after n failed login attempts, locking accounts after m failed attempts, time delay between login attempts
 
 salt = c.execute('SELECT salt FROM users WHERE username = ?', username)
 

@@ -1,0 +1,3 @@
+Error handling for username, email, firstname, lastname > 100 bytes
+Check for common/insecure passwords
+"Remember me" checkbox, captcha after n failed login attempts, locking account after m failed attempts, time delay between attempts
