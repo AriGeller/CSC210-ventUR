@@ -16,13 +16,15 @@ lastname = form['LastName'].value
 email = form['email'].value
 password = form['Password'].value
 
+# TODO check for common/insecure passwords
+
 conn = sqlite3.connect('users.db')
 c = conn.cursor()
 
-salt = os.urandom()
+salt = os.urandom(100)
 dk = binascii.hexlify(hashlib.pbkdf2_hmac('sha256', b'password', b'salt', 512000))
 
-c.execute('insert into users values (?,?,?,?,?,?)', (username, email, dk, firstname, lastname, salt))
+c.execute('INSERT INTO users VALUES (?,?,?,?,?,?)', (username, email, dk, firstname, lastname, salt))
 
 conn.commit()
 conn.close()
