@@ -7,6 +7,7 @@ import cgi
 import binascii
 import hashlib
 import os
+from base64 import b64encode
 
 form = cgi.FieldStorage()
 
@@ -20,9 +21,12 @@ password = form['Password'].value
 
 conn = sqlite3.connect('users.db')
 c = conn.cursor()
+conn.text_factory = str
 
-salt = os.urandom(100)
-dk = binascii.hexlify(hashlib.pbkdf2_hmac('sha256', b'password', b'salt', 512000))
+salt = os.urandom(64)
+salt = b64encode(salt).decode('utf-8')
+
+dk = binascii.hexlify(hashlib.pbkdf2_hmac('sha256', password, salt, 512000))
 
 c.execute('INSERT INTO users VALUES (?,?,?,?,?,?)', (username, email, dk, firstname, lastname, salt))
 
