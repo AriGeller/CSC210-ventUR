@@ -4,11 +4,9 @@ import cgi
 import sqlite3
 
 form = cgi.FieldStorage()
-checkuser = form['Username'].value
-
-data = {}
+username = form['Username'].value
 
 conn = sqlite3.connect('users.db')
 c = conn.cursor()
 
-dbuser = c.execute('SELECT ')
+dbuser = c.execute('SELECT user FROM users WHERE username = ?', (username,))
