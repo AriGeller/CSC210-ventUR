@@ -1,4 +1,5 @@
 #!/bin/bash/python
+# pylint: disable=C0103
 
 import cgi
 import sqlite3
@@ -16,6 +17,6 @@ c = conn.cursor()
 data = {}
 
 for user in c.execute('SELECT user FROM users WHERE username = ?', (username,)):
-	data['name'] = user[0];
+    data['name'] = user[0]
 
-print json.dumps(data);
+print json.dumps(data)

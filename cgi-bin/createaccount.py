@@ -5,20 +5,17 @@
 
 import cgi
 import cgitb
-
-cgitb.enable()
-
-form = cgi.FieldStorage()
-
 import sqlite3
 import binascii
 import hashlib
 import os
 from base64 import b64encode
 
+cgitb.enable()
 
+form = cgi.FieldStorage()
 
-print 'Content-Type: text/html'
+print 'Content-Type: text/html\n\n'
 
 username = form['Username'].value
 firstname = form['FirstName'].value
@@ -54,7 +51,7 @@ print '<html>'
 print '  <head>'
 print '    <meta http-equiv="refresh" content="0;url=%s" />' % redirectURL
 print '    <title>You are going to be redirected</title>'
-print '  </head>' 
+print '  </head>'
 print '  <body>'
 print '    Redirecting... <a href="%s">Click here if you are not redirected</a>' % redirectURL
 print '  </body>'
