@@ -28,8 +28,8 @@ c = conn.cursor()
 data = {}
 
 for user in c.execute("SELECT * FROM users WHERE username =?", [userTest]):
-        data['name'] = user[0]
-        data['test'] = user[3]
+	data['name'] = user[0]
+	data['test'] = user[3]
 
 if data['name'] == userTest:
 	print json.dumps(data)

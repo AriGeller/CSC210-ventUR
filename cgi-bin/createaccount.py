@@ -18,7 +18,6 @@ form = cgi.FieldStorage()
 print 'Content-Type: text/html\n\n'
 
 username = form['Username'].value
-	
 
 firstname = form['FirstName'].value
 lastname = form['LastName'].value

@@ -47,7 +47,7 @@ f.write("fetchone salt")
 # Computer hash using salt and provided password
 dk = binascii.hexlify(hashlib.pbkdf2_hmac('sha256', password, salt, 512000))
 
-f.write("dk");
+f.write("dk")
 # Fetch password hash from database
 c.execute('SELECT password FROM users WHERE username = ?', [username])
 
@@ -55,8 +55,8 @@ f.write("get password")
 dk2 = c.fetchone()[0]
 f.write("dk2")
 
-f.close();
+f.close()
 # Compare database hash to computed hash
-if(dk == dk2):
+if dk == dk2:
 	data["test"] = "pass"
-	print json.dumps(data) 
+	print json.dumps(data)
