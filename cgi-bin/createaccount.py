@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # pylint: disable=C0103
 # pylint: disable=C0301
@@ -18,6 +18,8 @@ form = cgi.FieldStorage()
 print 'Content-Type: text/html\n\n'
 
 username = form['Username'].value
+	
+
 firstname = form['FirstName'].value
 lastname = form['LastName'].value
 email = form['email'].value
