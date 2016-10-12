@@ -26,7 +26,7 @@ var check = function(e) {
 
 		method: "post",
 
-		datatype: "json",
+		dataType: "json",
 
 		success: function() {
 			return true;
