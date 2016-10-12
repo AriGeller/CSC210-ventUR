@@ -4,6 +4,10 @@
 <html>
     <head>
         <title>Welcome to +ventUR!!!</title>
+
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        
+        <script src="scripts/LogIn.js"></script>
         
         <link rel="stylesheet" type="text/css" href="custom.css">
     </head>   
@@ -11,7 +15,7 @@
         <h1> Welcome to +ventUR</h1>
         <p> +ventUR lets you go on adventures with friends both old and new!  </p>
         <br>
-        <form name= "LOGIN" method = "post" action="cgi/read.py">
+        <form name= "LOGIN" id="form" method = "post" action="FirstLogin-Page.html">
             <p> 
                 <label for="Username">Username:</label>
                 <input id ="Username" type="text" placeholder="Username" name="Username" required>

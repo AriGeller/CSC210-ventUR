@@ -12,7 +12,6 @@ $(document).ready(function() {
    $('#Username').blur(function() {
 
         $uname = $('#Username').val();
-        console.log($uname);
         if($uname.length > 0) {
             
 
