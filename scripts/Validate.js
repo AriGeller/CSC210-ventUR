@@ -6,9 +6,8 @@ $(document).ready(function() {
     console.log("Script loaded...");
    $('#form').submit(function(e) {
         console.log("Test");
-        if(check(e) && isValidUserName){
-            addAcc();
-        }
+        check(e);
+         
     });
    $('#Username').blur(function() {
 
@@ -59,15 +58,14 @@ var check = function(e){
         e.preventDefault()
         return false;
     } else {
-        return true;
+        if (isValidUserName) {
+            return true;
+        } else {
+            e.preventDefault();
+            return false;
+        }
+        
     }
     
 }
 
-//var addAcc = function() {
-
-  //  $.ajax() {
-      //  url: 
-    //}
-
-//}
