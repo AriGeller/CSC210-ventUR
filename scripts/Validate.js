@@ -4,7 +4,6 @@ var isValidUserName = true;
 
 $(document).ready(function() {
     console.log("Script loaded...");
-    console.log("test");
    $('#form').submit(function(e) {
         console.log("Test");
         check(e);
