@@ -22,7 +22,7 @@ c = conn.cursor()
 data = {}
 
 for user in c.execute("SELECT * FROM users WHERE username =?", [userTest]):
-	data['name'] = "name"
+	data['name'] = user[0]
 	    
 
 
