@@ -27,12 +27,14 @@ $(document).ready(function() {
             dataType: "json",
             
             success: function(data) {
+                console.log("success");
                 isValidUserName = false;
                 $('#checkOK').empty();
                 $('#checkBad').html("That username is already taken.")
             },
             
             error: function() {
+                console.log("failure");
                 isValidUserName = true;
                 $('#checkOK').html("Your chosen username is available!");
                 $('#checkBad').empty();
