@@ -4,6 +4,7 @@ var isValidUserName = true;
 
 $(document).ready(function() {
     console.log("Script loaded...");
+    console.log("test");
    $('#form').submit(function(e) {
         console.log("Test");
         check(e);
@@ -12,6 +13,7 @@ $(document).ready(function() {
    $('#Username').blur(function() {
 
         $uname = $('#Username').val();
+        console.log($uname);
         if($uname.length > 0) {
             
 
@@ -63,6 +65,7 @@ var check = function(e){
         if (isValidUserName) {
             return true;
         } else {
+            alert("Sorry; your chosen username has been taken.");
             e.preventDefault();
             return false;
         }
