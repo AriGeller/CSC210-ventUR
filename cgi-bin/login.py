@@ -13,6 +13,8 @@ import json
 print "Content-Type: application/json"
 print
 
+
+
 cgitb.enable()
 
 f = open("test.txt", "w")
@@ -59,4 +61,4 @@ f.close()
 # Compare database hash to computed hash
 if dk == dk2:
 	data["test"] = "pass"
-	print json.dumps(data)
+	print json.dumps(data) 
