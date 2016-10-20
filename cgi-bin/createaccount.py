@@ -35,6 +35,11 @@ salt = b64encode(salt).decode('utf-8')
 # Compute hash using password and salt
 dk = binascii.hexlify(hashlib.pbkdf2_hmac('sha256', password, salt, 512000))
 
+f = open("new.txt", "w")
+f.write("Salt = " + salt + "\n")
+f.write("Dk = " + dk)
+f.close()
+
 # Insert values into database
 c.execute('INSERT INTO users VALUES (?,?,?,?,?,?)', (username, email, dk, firstname, lastname, salt))
 

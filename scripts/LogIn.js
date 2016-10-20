@@ -17,7 +17,7 @@ $(document).ready(function() {
 var check = function(e) {
 
 	$.ajax({
-		url: "../cgi-bin/login.py",
+		url: '../cgi-bin/test.py/',
 
 		data: {
 			Username: $uname,

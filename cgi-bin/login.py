@@ -3,17 +3,16 @@
 # pylint: disable=C0103
 # pylint: disable=C0301
 
-import sqlite3
-import cgi
+
 import binascii
+import cgi
 import cgitb
 import hashlib
 import json
+import sqlite3
 
 print "Content-Type: application/json"
 print
-
-
 
 cgitb.enable()
 
@@ -60,5 +59,6 @@ f.write("dk2")
 f.close()
 # Compare database hash to computed hash
 if dk == dk2:
-	data["test"] = "pass"
-	print json.dumps(data) 
+    data["test"] = "pass"
+    print json.dumps(data)
+    # end
