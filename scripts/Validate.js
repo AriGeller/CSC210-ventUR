@@ -3,9 +3,7 @@
 var isValidUserName = true;
 
 $(document).ready(function() {
-    console.log("Script loaded...");
    $('#form').submit(function(e) {
-        console.log("Test");
         check(e);
          
     });

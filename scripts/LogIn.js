@@ -1,43 +1,50 @@
 //LogIn.js//
 
+var isValid = false
+
 $(document).ready(function() {
-	console.log("Script loaded...");
+	$('#Password').keyup(function() {
+		$uname = $('#Username').val();
+        if($uname.length > 0) {
+
+        	$.ajax({
+			url: '../cgi-bin/test.py/',
+
+			data: {
+				Username: $("#Username").val(),
+				Password: $("#Password").val()
+			},
+
+			method: "post",
+
+			dataType: "json",
+
+			success: function() {
+			
+				isValid = true
+			},
+
+			error: function() {
+				
+				isValid = false
+
+			}
+	})
+        }
+	});
 	$('#form').submit(function(e) {
-
-		if(!check(e)) {
-			e.preventDefault();
-			return false;
-		}
-
+		check(e);
+		
 	});
 });
 
 var check = function(e) {
-
-	$.ajax({
-		url: '../cgi-bin/test.py/',
-
-		data: {
-			Username: $("#Username").val(),
-			Password: $("#Password").val()
-		},
-
-		method: "post",
-
-		dataType: "json",
-
-		success: function() {
-			Cookies.set('name', $("#Username").val())
-			return true;
-		},
-
-		error: function() {
-			alert("Sorry, we couldn't find an account with those credentials. Please try again");
-			e.preventDefault();
-			return false;
-
-		}
-	})
+	if(!isValid) {
+		alert("Sorry, we couldn't find an account with those credentials. Please try again");
+		e.preventDefault()
+	} else {
+		Cookies.set('name', $("#Username").val())
+	}
 
 
 }
