@@ -17,12 +17,14 @@ form = cgi.FieldStorage()
 
 print 'Content-Type: text/html\n\n'
 
+
 username = form['Username'].value
 
 firstname = form['FirstName'].value
 lastname = form['LastName'].value
 email = form['email'].value
 password = form['Password'].value
+
 
 conn = sqlite3.connect('users.db')
 c = conn.cursor()
@@ -33,12 +35,7 @@ salt = os.urandom(64)
 salt = b64encode(salt).decode('utf-8')
 
 # Compute hash using password and salt
-dk = binascii.hexlify(hashlib.pbkdf2_hmac('sha256', password, salt, 512000))
-
-f = open("new.txt", "w")
-f.write("Salt = " + salt + "\n")
-f.write("Dk = " + dk)
-f.close()
+dk = hashlib.sha256(password + salt).hexdigest()
 
 # Insert values into database
 c.execute('INSERT INTO users VALUES (?,?,?,?,?,?)', (username, email, dk, firstname, lastname, salt))
