@@ -4,8 +4,8 @@
 
 $(document).ready(function() {
     console.log("Script loaded...");
-    var username = getCookie("Username");
-    displayWelcome();
+    var username = Cookies.get("name");
+    displayWelcome(username);
 });
 
 var getUserInfo = function(uname) {
@@ -19,13 +19,8 @@ var getUserInfo = function(uname) {
     
 };
 
-function getCookie(name) {
-  var value = "; " + document.cookie;
-  var parts = value.split("; " + name + "=");
-  if (parts.length == 2) return parts.pop().split(";").shift();
-};
 
-var displayWelcome = function() {
+var displayWelcome = function(username) {
     $('#welcome').html('Hello, ' + username + '. Are You Ready To Go On An Adventure?');
 }
 

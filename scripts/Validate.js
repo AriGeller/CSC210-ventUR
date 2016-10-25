@@ -61,7 +61,10 @@ var check = function(e){
         return false;
     } else {
         if (isValidUserName) {
+            Cookies.set('name', $('#Username').val())
+            alert(Cookies.get('name'))
             return true;
+
         } else {
             alert("Sorry; your chosen username has been taken.");
             e.preventDefault();

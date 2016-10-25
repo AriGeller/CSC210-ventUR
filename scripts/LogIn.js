@@ -3,8 +3,6 @@
 $(document).ready(function() {
 	console.log("Script loaded...");
 	$('#form').submit(function(e) {
-		$uname = $("#Username").val();
-		$pass = $("#Password").val();
 
 		if(!check(e)) {
 			e.preventDefault();
@@ -20,8 +18,8 @@ var check = function(e) {
 		url: '../cgi-bin/test.py/',
 
 		data: {
-			Username: $uname,
-			Password: $pass
+			Username: $("#Username").val(),
+			Password: $("#Password").val()
 		},
 
 		method: "post",
@@ -29,6 +27,7 @@ var check = function(e) {
 		dataType: "json",
 
 		success: function() {
+			Cookies.set('name', $("#Username").val())
 			return true;
 		},
 
