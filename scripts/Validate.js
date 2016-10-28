@@ -7,7 +7,7 @@ $(document).ready(function() {
         check(e);
          
     });
-   $('#Username').blur(function() {
+   $('#Username').keyup(function() {
 
         $uname = $('#Username').val();
         if($uname.length > 0) {
@@ -60,7 +60,6 @@ var check = function(e){
     } else {
         if (isValidUserName) {
             Cookies.set('name', $('#Username').val())
-            alert(Cookies.get('name'))
             return true;
 
         } else {
