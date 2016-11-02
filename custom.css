@@ -1,6 +1,48 @@
-h1 {
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Julius Sans One', sans-serif;
+    background-image: url(https://hd.unsplash.com/photo-1431794062232-2a99a5431c6c);
+    background-size: cover;
+    background-position: center;
+    padding-top: 70px;
+    color: white;
+}
+
+#content {
+    padding-top: 10%;
+    text-align: center;
+    color:  white;
+    text-shadow: 0 0 3px #000000, 0 0 5px #000000;
+   
+/*   #efff0f  #f1ff2d*/
+}
+
+hr {
+    width: 40%;
+}
+
+/*
+
+body > div.container > nav > div {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+*/
+
+.navbar-inverse.navbar-fixed-top {
+    background-color:#1d5ec6;
+    
+/*    #1e61cc*/
+/*    #0d00a3*/
+}
+
+.navbar-inverse .navbar-brand {
     color: #e1ff02;
-    background-color:#0d00a3;
+    padding-left: 10px;
+    font-size: 23px;
 }
 
 #checkOK {
@@ -9,4 +51,64 @@ h1 {
 
 #checkBad {
     color: red
+}
+
+form {
+    padding-top: 8px;
+    padding-right: 10px;
+}
+
+.navbar-inverse .navbar-nav>.active>a {
+    color: white;
+    background-color: #123f87;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
+}
+
+label {
+    color: white;
+}
+
+
+
+@media (max-width: 1199px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+    form {
+        padding-bottom: 10px;
+    }
 }
