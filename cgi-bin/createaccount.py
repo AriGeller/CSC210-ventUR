@@ -40,7 +40,7 @@ dk = hashlib.sha256(password + salt).hexdigest()
 # Insert values into database
 c.execute('INSERT INTO users VALUES (?,?,?,?,?,?)', (username, email, dk, firstname, lastname, salt))
 
-c.execute('CREATE TABLE %s_friends(username varchar(100) primary key, status varchar(10))', username)
+c.execute('CREATE TABLE ?_friends(username varchar(100) primary key, status varchar(10))', username)
 
 conn.commit()
 conn.close()
