@@ -10,6 +10,14 @@ c = conn.cursor()
 
 username = form['username'].value
 friend = form['friend'].value
-status = #accepted, pending, requested
 
-c.execute('INSERT INTO ?_friends VALUES (?, ?)', (username, friend, status))
+c.execute('SELECT status FROM ?_friends WHERE username = ?' (username, friend))
+status = c.fetchone()[0]
+
+if(status == "pending"):
+	
+else if(status == "requested"):
+
+else:
+	c.execute('INSERT INTO ?_friends VALUES (?, ?)', (username, friend, "requested"))
+	c.execute('INSERT INTO ?_friends VALUES (?, ?)', (friend, username, "pending"))
