@@ -2,25 +2,108 @@
 *AJAX file for the main paige
 **/
 
+var isValidNewFriend = false;
+var username
 $(document).ready(function() {
-    console.log("Script loaded...");
-    var username = Cookies.get("name");
+	username = Cookies.get("name");
+	updateList()
+	console.log("Script loaded...")
+    
+
     displayWelcome(username);
+    var $new
+    $('#toAdd').keyup(function() {
+    	$new = $('#toAdd').val()
+		$.ajax({
+     		url: '../cgi-bin/checkuser.py',
+
+        	data: {
+           		username: $new 
+        	},
+                
+        	type: "post",
+            
+        	dataType: "json",
+            
+        	success: function(data) {
+        	
+            	isValidNewFriend = true;
+
+        	},
+            
+        	error: function() {
+          
+             	isValidNewFriend = false
+        	}
+            
+    	});
+	})
+
+	$('#add').submit(function(e) {
+		e.preventDefault()
+		if (isValidNewFriend){
+			$.ajax({
+	        	url: '../cgi-bin/addfriendreal.py',
+
+	        	data: {
+	        		username: username,
+	        		friend: $new 
+
+	        	},
+	                
+	        	type: "post",
+	            
+	        	dataType: "json",
+	            
+	        	success: function() {
+	        		alert("yay")
+	        		updateList()
+	       		},
+	            
+	        	error: function() {
+	        		alert("Oops! Something went wrong!")
+	        	}
+
+        	});
+		
+		} else {
+			alert("Sorry, that user doesn't exist. Please try again.")
+		}
+	})
+
 });
 
-var getUserInfo = function(uname) {
-    
-    
-    
-    $.ajax({
-        url: '../cgi-bin/'
-        
-    });
-    
-};
+
+
 
 
 var displayWelcome = function(username) {
     $('#welcome').html('Hello, ' + username + '. Are You Ready To Go On An Adventure?');
 }
 
+
+function updateList() {
+	$.ajax({
+		url: "../cgi-bin/getfriends.py",
+
+		data: {
+			username: username
+		},
+
+		type: "post",
+
+		dataType: "json",
+
+		success: function(data) {
+			console.log("made it!")
+			for (var i = 0; i < data.friends.length; i++){
+				$('#accepted').append("<li>" + data.friends[i] + "</li>")
+			}
+		
+		},
+
+		error: function() {
+			alert("Couldn't get friends.")
+		} 
+	})
+}

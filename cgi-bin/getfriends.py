@@ -9,14 +9,26 @@ import cgi
 
 form = cgi.FieldStorage()
 
+print "Content-Type: application/json\n\n"
+
 conn = sqlite3.connect('users.db')
 c = conn.cursor()
 
 username = form['username'].value
-status = "accepted"
+status1 = "accepted"
+status2 = "pending"
 
-c.execute('SELECT friends FROM ?_friends WHERE status = ?', (username, status))
+getFriends = "SELECT friends FROM %s_friends" % username
 
-friends = c.fetch()
+c.execute(getFriends)
 
-print json.dumps(friends)
+friends = c.fetchall()
+
+
+
+
+data = {}
+data['friends'] = friends
+
+
+print json.dumps(data)

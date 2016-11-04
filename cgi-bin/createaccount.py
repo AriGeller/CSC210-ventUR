@@ -1,4 +1,4 @@
-3#!/usr/bin/env python
+#!/usr/bin/env python
 
 # pylint: disable=C0103
 # pylint: disable=C0301
@@ -40,7 +40,8 @@ dk = hashlib.sha256(password + salt).hexdigest()
 # Insert values into database
 c.execute('INSERT INTO users VALUES (?,?,?,?,?,?)', (username, email, dk, firstname, lastname, salt))
 
-c.execute('CREATE TABLE ?_friends(username varchar(100) primary key, status varchar(10))', username)
+sql = 'CREATE TABLE {0}(username varchar(100) primary key, status varchar(10))'.format(username + '_friends')
+c.execute(sql)
 
 conn.commit()
 conn.close()
