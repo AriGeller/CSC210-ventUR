@@ -14,14 +14,19 @@ c = conn.cursor()
 username = form['username'].value
 friend = form['friend'].value
 
-c.execute('SELECT status FROM ?_friends WHERE username = ?', (username, friend))
+sql = "SELECT status FROM %s_friends WHERE username = ?" % friend
+c.execute(sql, [username])
 status = c.fetchone()[0]
 
 try:
 	status
 except NotAdded:
-    c.execute('INSERT INTO ?_friends VALUES (?, ?)', (username, friend, "pending"))
-    c.execute('INSERT INTO ?_friends VALUES (?, ?)', (friend, username, "requested"))
+	sql = "INSERT INTO %s_friends VALUES (?, ?)" % username
+    c.execute(sql, (friend, "pending"))
+    sql = "INSERT INTO %s_friends VALUES (?, ?)" % friend
+    c.execute(sql, (username, "requested"))
 else:
-    c.execute('UPDATE ?_friends SET status = "accepted" WHERE username = ?', (friend, username))
-    c.execute('UPDATE ?_friends SET status = "accepted" WHERE username = ?', (username, friend))
+	sql = "UPDATE %s_friends SET status = accepted WHERE username = ?" % friend
+    c.execute(sql, [username])
+    sql = "UPDATE %s_friends SET status = accepted WHERE username = ?" % username
+    c.execute(sql, [friend])

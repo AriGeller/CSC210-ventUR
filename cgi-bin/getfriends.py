@@ -15,7 +15,8 @@ c = conn.cursor()
 username = form['username'].value
 status = "accepted"
 
-c.execute('SELECT friends FROM ?_friends WHERE status = ?', (username, status))
+sql = "SELECT friends FROM %s_friends WHERE status = ?" % username
+c.execute(sql, [status])
 
 friends = c.fetch()
 
