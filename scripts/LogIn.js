@@ -1,9 +1,14 @@
 //LogIn.js//
 
 var isValid = false
-
+var isLoggedIn = false
 $(document).ready(function() {
-	$('#Password').keyup(function() {
+	var test = Cookies.get('name');
+	if (test != undefined) {
+		console.log("here")
+		window.location.href = "FirstLogin-Page.html"
+	}
+	$('#form').submit(function(e) {
 		$uname = $('#Username').val();
         if($uname.length > 0) {
 
@@ -29,10 +34,8 @@ $(document).ready(function() {
 				isValid = false
 
 			}
-	})
+			})
         }
-	});
-	$('#form').submit(function(e) {
 		check(e);
 		
 	});
@@ -43,7 +46,7 @@ var check = function(e) {
 		alert("Sorry, we couldn't find an account with those credentials. Please try again");
 		e.preventDefault()
 	} else {
-		Cookies.set('name', $("#Username").val())
+		Cookies.set('name', $("#Username").val(), {expires: 7})
 	}
 
 

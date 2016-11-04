@@ -59,7 +59,7 @@ var check = function(e){
         return false;
     } else {
         if (isValidUserName) {
-            Cookies.set('name', $('#Username').val())
+            Cookies.set('name', $("#Username").val(), {expires: 7})
             return true;
 
         } else {

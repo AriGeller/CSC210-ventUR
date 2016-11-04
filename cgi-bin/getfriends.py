@@ -15,12 +15,11 @@ conn = sqlite3.connect('users.db')
 c = conn.cursor()
 
 username = form['username'].value
-status1 = "accepted"
-status2 = "pending"
 
-getFriends = "SELECT friends FROM %s_friends" % username
+getFriends = "SELECT username FROM %s_friends" % username
 
 c.execute(getFriends)
+
 
 friends = c.fetchall()
 

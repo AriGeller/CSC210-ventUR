@@ -1,6 +1,0 @@
-startcontent-type
-Testing2
-friend
-before execute
-made string
-INSERT INTO Testing2_friends VALUES (?, ?)

@@ -3,13 +3,17 @@
 **/
 
 var isValidNewFriend = false;
-var username
+var username;
 $(document).ready(function() {
 	username = Cookies.get("name");
 	updateList()
 	console.log("Script loaded...")
     
-
+	$("#LogOut").click(function() {
+		console.log("hi")
+		Cookies.remove("name");
+		window.location.href = "index.html"
+	})
     displayWelcome(username);
     var $new
     $('#toAdd').keyup(function() {
@@ -40,6 +44,7 @@ $(document).ready(function() {
 	})
 
 	$('#add').submit(function(e) {
+		console.log("submitting?")
 		e.preventDefault()
 		if (isValidNewFriend){
 			$.ajax({
@@ -95,7 +100,6 @@ function updateList() {
 		dataType: "json",
 
 		success: function(data) {
-			console.log("made it!")
 			for (var i = 0; i < data.friends.length; i++){
 				$('#accepted').append("<li>" + data.friends[i] + "</li>")
 			}
