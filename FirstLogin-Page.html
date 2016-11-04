@@ -3,14 +3,49 @@
         <title>Welcome to +ventUR</title>
         <!-- load jQuery -->
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
         <script src="scripts/cookie.js"></script>
         
+        
+        <link rel ="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="custom.css">
+        <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="scripts/LogIn.js"></script>
         <!-- include JS -->
         <script type = text/javascript src= "scripts/Activate.js"></script>
         
-        <link rel="stylesheet" type="text/css" href="custom.css">
     </head>  
     <body>
+         <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">+ventUR</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> <!-- Right side of navbar -->
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Home<span class="sr-only">(current)</span></a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            
+                                <button class="btn btn-default" name="Log Out" id="Log Out" type=submit>Log Out</button>
+                        </li>
+                    </ul>
+                </div>  
+            </div>
+        </nav>
+        
+    </div class="container">
         <br>
         <br>
         <h2 id="welcome"></h2>

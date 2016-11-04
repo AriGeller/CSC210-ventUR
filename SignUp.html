@@ -3,37 +3,74 @@
         <title>Start Your Adventure</title>
         <!-- load jQuery -->
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
         <script src="scripts/cookie.js"></script>
+        
+        
+        <link rel ="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="custom.css">
+        <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="scripts/LogIn.js"></script>
         
         <script src="scripts/Validate.js"></script>
          
-        <link rel="stylesheet" type="text/css" href="custom.css">
     </head>  
     <body> 
+        <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">+ventUR</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> <!-- Right side of navbar -->
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Home<span class="sr-only">(current)</span></a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                    </ul>
+                </div>  
+            </div>
+        </nav>
+        
+    </div class="container">
         <h1>Thank You for Signing Up for +ventUR</h1>
         <form name="SIGNUP" id="form" method="post" action=/cgi-bin/createaccount.py>
             <br>
             <p> 
                 <label for="FirstName">First Name:</label>
-                <input id ="FirstName" type="text" placeholder="John" required name = "FirstName"><BR/>
+                <input id ="FirstName" type="text" placeholder="John" required name = "FirstName">
+
                 <label for="LastName">Last Name:</label>
                 <input id ="LastName" name="LastName" type="text" placeholder="Doe" required>
                
             </p> 
+            <br>
             <p>
                 <label for="Username"> Username:</label> 
                 <input id="Username" name="Username" type="text" placeholder="JohnDoe35" required>
                 <label id="checkOK"></label>
                 <label id="checkBad"></label>
             </p>
+            <br>
             <p> 
                 <label for="email">E-Mail:</label>
                 <input id ="email" name="email" type="email" required>
             </p>
+            <br>
              <p> 
                 <label for="Password">Password:</label>
                 <input id ="Password" name="Password" type="password" pattern=".{4,15}" required title="4 to 15 characters">
             </p>
+            <br>
             <p>
                  <label for="Re-Password">Please Re-type your Password:</label>
                 <input id ="Re-Password" type="password" pattern=".{4,15}" required title="4 to 15 characters">
