@@ -7,10 +7,8 @@ var username;
 $(document).ready(function() {
 	username = Cookies.get("name");
 	updateList()
-	console.log("Script loaded...")
     
 	$("#LogOut").click(function() {
-		console.log("hi")
 		Cookies.remove("name");
 		window.location.href = "index.html"
 	})
@@ -44,7 +42,6 @@ $(document).ready(function() {
 	})
 
 	$('#add').submit(function(e) {
-		console.log("submitting?")
 		e.preventDefault()
 		if (isValidNewFriend){
 			$.ajax({
@@ -61,7 +58,6 @@ $(document).ready(function() {
 	        	dataType: "json",
 	            
 	        	success: function() {
-	        		alert("yay")
 	        		updateList()
 	       		},
 	            
@@ -107,7 +103,6 @@ function updateList() {
 		},
 
 		error: function() {
-			alert("Couldn't get friends.")
 		} 
 	})
 }
