@@ -2,6 +2,10 @@ html {
     height: 100%;
 }
 
+form {
+    color: black;
+}
+
 body {
     font-family: 'Julius Sans One', sans-serif;
     background-image: url(https://hd.unsplash.com/photo-1431794062232-2a99a5431c6c);
@@ -47,10 +51,12 @@ body > div.container > nav > div {
 
 #checkOK {
     color: greenyellow;
+    text-shadow: 0 0 3px #000000, 0 0 5px #000000;
 }
 
 #checkBad {
-    color: red
+    color: red;
+    text-shadow: 0 0 3px #000000, 0 0 5px #000000;
 }
 
 .accepted {
