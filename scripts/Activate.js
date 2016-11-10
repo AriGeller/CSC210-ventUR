@@ -7,6 +7,7 @@ var username;
 $(document).ready(function() {
 	username = Cookies.get("name");
 	updateList()
+	
     
 	$("#LogOut").click(function() {
 		Cookies.remove("name");
@@ -58,6 +59,7 @@ $(document).ready(function() {
 	        	dataType: "json",
 	            
 	        	success: function() {
+	        		
 	        		updateList()
 	       		},
 	            
@@ -84,6 +86,7 @@ var displayWelcome = function(username) {
 
 
 function updateList() {
+	$('#accepted').empty()
 	$.ajax({
 		url: "../cgi-bin/getfriends.py",
 
@@ -103,6 +106,7 @@ function updateList() {
 		},
 
 		error: function() {
+			
 		} 
 	})
 }
