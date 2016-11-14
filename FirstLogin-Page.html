@@ -18,7 +18,7 @@
         
     </head>  
     <body>
-         <div class="container">
+        <div class="container">
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -52,18 +52,19 @@
             <button name="GoToEventPage" id="GoToEventPage" type=submit>Add Event!</button>
         </form>    
         <h2 id="welcome"></h2>
-        <h3>Add a friend!<h3>  
+        <h3>Add a friend!</h3>  
         <form name="AddFriend" id="add" method="post" action="FirstLogin-Page.html">
             <input id="toAdd" name="toAdd" type="text" required>
             <button name="SubmitAdd" id="submitAdd" type=submit>Add!</button>
         </form>
 
 
-        <br>
 
-        <h2> Friends </h2> 
+        <h2 id = "friendsList"> Friends </h2> 
         <ul class="accepted" id="accepted"></ul>
-        
+        <br>
+        <h2>Events</h2>
+        <ul class="currentEvents" id="CurrentEvents"></ul>
 
     </body>    
 </html>
