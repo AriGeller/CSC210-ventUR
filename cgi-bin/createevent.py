@@ -21,8 +21,14 @@ guests = None
 conn = sqlite3.connect('events.db')
 c = conn.cursor()
 
-#need to check to make sure eventid doesn't exist in database, if it does, rerandomize
+#This is hacky but I think it works
 eventid = randint(0, 99999999)
+while True:
+	c.execute('SELECT name FROM events WHERE eventid = ?')
+	if c.fetchone() is None:
+		eventid = randint(0, 99999999)
+	else:
+		break
 
 c.execute('INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?)', (eventid, name, owner, start, end, location, description, guests))
 
