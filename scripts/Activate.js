@@ -6,7 +6,8 @@ var isValidNewFriend = false;
 var username;
 $(document).ready(function() {
 	username = Cookies.get("name");
-	updateList()
+	updateList();
+	updateEvents();
 	
     
 	$("#LogOut").click(function() {
@@ -109,4 +110,8 @@ function updateList() {
 			
 		} 
 	})
+}
+
+function updateEvents() {
+	
 }
