@@ -13,10 +13,15 @@ eventid = form['EventID'].value
 conn = sqlite3.connect('events.db')
 c = conn.cursor()
 
-c.execute('SELECT * FROM events WHERE eventid = ?', [eventid])
+c.execute('SELECT name, owner, starttime, endtime, location, description FROM events WHERE eventid = ?', [eventid])
 
 data = {}
-#need to properly format data
-#data['name'] = c.fetch...?
+row = c.fetchone()
+data['name'] = row[0]
+data['owner'] = row[1]
+data['startime'] = row[2]
+data['endtime'] = row[3]
+data['location'] = row[4]
+data['description'] = row[5]
 
 print json.dumps(data)

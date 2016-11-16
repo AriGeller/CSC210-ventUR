@@ -15,7 +15,8 @@ start = form['StartTime'].value
 end = form['EndTime'].value
 location = form['Location'].value
 description = form['Description'].value
-privacy = form['Privacy'].value # Don't worry about this yet
+guests = None
+#privacy = form['Privacy'].value # Don't worry about this yet
 
 conn = sqlite3.connect('events.db')
 c = conn.cursor()
@@ -23,7 +24,7 @@ c = conn.cursor()
 #need to check to make sure eventid doesn't exist in database, if it does, rerandomize
 eventid = randint(0, 99999999)
 
-c.execute('INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?)', (eventid, name, owner, start, end, location, description, privacy))
+c.execute('INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?)', (eventid, name, owner, start, end, location, description, guests))
 
 conn.commit()
 conn.close()
