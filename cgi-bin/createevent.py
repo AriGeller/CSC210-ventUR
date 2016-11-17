@@ -26,9 +26,9 @@ eventid = randint(0, 99999999)
 while True:
 	c.execute('SELECT name FROM events WHERE eventid = ?')
 	if c.fetchone() is None:
-		eventid = randint(0, 99999999)
-	else:
 		break
+	else:
+		eventid = randint(0, 99999999)
 
 c.execute('INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?)', (eventid, name, owner, start, end, location, description, guests))
 
