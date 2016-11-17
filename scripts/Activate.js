@@ -113,5 +113,54 @@ function updateList() {
 }
 
 function updateEvents() {
+	$('#CurrentEvents').empty()
+	$.ajax({
+		url: "../cgi-bin/getevents.py",
+
+		data: {
+			Username: username
+		},
+
+		type: "post",
+
+		dataType: "json",
+
+		success: function(data) {
+
+			for (var i = 0; i < 3; i++) {
+				if (data.events[i] != null) {
+					console.log(data.events[i][0])
+					$.ajax({
+						url: "../cgi-bin/geteventinfo.py",
+
+						data: {
+							EventID: data.events[i][0]
+						},
+
+						type: "post",
+
+						dataType: "json",
+
+						success: function(data) {
+							console.log(data["name"]);
+							$('#CurrentEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + data["startime"] + "</li>")
+						},
+
+						error: function() {
+							alert("Couldn't get event info");
+						}
+					})
+				}
+			}
+			 			
+			
+		}, 
+
+		error: function() {
+			alert("Couldn't get events");
+		}
+
+
+	})
 	
 }
