@@ -5,6 +5,9 @@
 
 import cgi
 import sqlite3
+import json
+
+print 'Content-Type: application/json\n\n'
 
 form = cgi.FieldStorage()
 
