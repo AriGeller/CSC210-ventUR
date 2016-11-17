@@ -15,8 +15,8 @@ start = form['StartTime'].value
 end = form['EndTime'].value
 location = form['Location'].value
 description = form['Description'].value
-guests = None
-#privacy = form['Privacy'].value # Don't worry about this yet
+guests = None #Don't worry about this yet
+#privacy = form['Privacy'].value # Don't worry about this yet either
 
 conn = sqlite3.connect('events.db')
 c = conn.cursor()
