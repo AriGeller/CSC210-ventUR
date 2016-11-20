@@ -19,6 +19,6 @@ c = conn.cursor()
 c.execute('SELECT eventid FROM events WHERE owner = ?', [owner])
 
 data = {}
-data['EventID'] = c.fetchone()[0]
+data['events'] = c.fetchall()
 
 print json.dumps(data)

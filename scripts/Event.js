@@ -1,24 +1,30 @@
 $(document).ready(function() {
-	$('#form').submit(function e) {
+	
+	$("#LogOut").click(function() {
+		Cookies.remove("name");
+		window.location.href = "index.html"
+	})
+
+	$('#form').submit(function (e) {
 		$.ajax({
-			url: ,
+			url: "../cgi-bin/createevent.py",
 
 			data: {
-				username: Cookies.get("name"),
-				name: $('#EventName').val(),
-				start: $('#StartTime').val(),
-				end: $('#EndTime').val(),
-				location: $('#location').val(),
-				description: $('#Description').val()
+				Username: Cookies.get("name"),
+				EventName: $('#EventName').val(),
+				StartTime: $('#StartTime').val(),
+				EndTime: $('#EndTime').val(),
+				Location: $('#Location').val(),
+				Description: $('#Description').val()
 
 			},
 
 			type: "post",
 
-			dataType: ,
+			dataType: "json",
 
 			success: function() {
-
+				alert("event added succesfully");
 			},
 
 			error: function(e) {
@@ -28,7 +34,7 @@ $(document).ready(function() {
 
 
 		})
-	}
+	});
 
 
 

@@ -85,19 +85,7 @@ label {
     color: white;
 }
 
-/*
-h2#friendsList {
-    text-align: left;
-    padding-right: 20px;
-    
-}
-*/
 
-/*
-ul#accepted.accepted {
-    
-}
-*/
 
 @media (max-width: 1199px) {
     .navbar-header {

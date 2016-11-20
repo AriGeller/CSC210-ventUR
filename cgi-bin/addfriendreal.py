@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-# pylint: disable=C0103
-# pylint: disable=C0301
+# pylint: disable=0103
+# pylint: disable=0301
 
 
 import cgi
