@@ -24,12 +24,10 @@ $(document).ready(function() {
 			dataType: "json",
 
 			success: function() {
-				alert("event added succesfully");
 			},
 
 			error: function(e) {
 				e.preventDefault();
-				alert("Oops!");
 			}
 
 

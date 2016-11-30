@@ -16,7 +16,7 @@ user = form['Username'].value
 conn = sqlite3.connect('users.db')
 c = conn.cursor()
 
-sql = "SELECT username FROM %s_friends WHERE status = accepted", user
+sql = "SELECT username FROM {0}_friends WHERE status = 'accepted'".format(user)
 c.execute(sql)
 
 friends = c.fetchall()
@@ -28,10 +28,10 @@ c = conn.cursor()
 events = []
 
 for friend in friends:
-	c.execute("SELECT * FROM events WHERE owner = ?", [friend[0]])
+	c.execute("SELECT eventid FROM events WHERE owner = ?", [friend[0]])
 	friendevents = c.fetchall()
 	for event in friendevents:
-		events.append(event)
+		events.append(event[0])
 
 conn.close()
 data = {}

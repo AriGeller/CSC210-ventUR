@@ -4,10 +4,26 @@
 
 var isValidNewFriend = false;
 var username;
+
+$(function () {
+	$('#dialog').dialog({
+		autoOpen: false,
+		show: {
+			effect: "blind",
+			duration: 1000
+		},
+		hide: {
+			effect: "explode",
+			duration: 1000
+		}
+	});
+});
+
 $(document).ready(function() {
 	username = Cookies.get("name");
 	updateList();
 	updateEvents();
+	updateFriendEvents();
 	
     
 	$("#LogOut").click(function() {
@@ -44,7 +60,8 @@ $(document).ready(function() {
 	})
 
 	$('#add').submit(function(e) {
-		e.preventDefault()
+		e.preventDefault();
+		$('#toAdd').val('');
 		if (isValidNewFriend){
 			$.ajax({
 	        	url: '../cgi-bin/addfriendreal.py',
@@ -61,7 +78,8 @@ $(document).ready(function() {
 	            
 	        	success: function() {
 	        		
-	        		updateList()
+	        		updateList();
+	        		updateFriendEvents();
 	       		},
 	            
 	        	error: function() {
@@ -127,30 +145,40 @@ function updateEvents() {
 
 		success: function(data) {
 
-			for (var i = 0; i < 3; i++) {
-				if (data.events[i] != null) {
-					console.log(data.events[i][0])
-					$.ajax({
-						url: "../cgi-bin/geteventinfo.py",
+			for (var i = 0; data.events[i] != null; i++) {
 
-						data: {
-							EventID: data.events[i][0]
-						},
+				console.log("id: " + data.events[i])
+				$.ajax({
+					url: "../cgi-bin/geteventinfo.py",
 
-						type: "post",
+					data: {
+						EventID: data.events[i][0]
+					},
 
-						dataType: "json",
+					type: "post",
 
-						success: function(data) {
-							console.log(data["name"]);
-							$('#CurrentEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + data["startime"] + "</li>")
-						},
+					dataType: "json",
 
-						error: function() {
-							alert("Couldn't get event info");
-						}
-					})
-				}
+					success: function(data) {
+					
+						$('#CurrentEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + data["startime"] + "</li>")
+						var $button = $("<button type='button'>Get info</button>");
+						$button.click(function() {
+							$("#dialog").empty();
+							$("#dialog").append("<p> Event: " + data["name"] + "<br> Location: " + data["location"] + "<br> Starts At: " + data["startime"] + "<br> Ends At: " + data["endtime"] + "<br> Description: " + data["description"] + "</p>");
+							$("#dialog").dialog("open");
+						});
+
+						
+						$('#CurrentEvents').append($button);
+
+					},
+
+					error: function() {
+						alert("Couldn't get event info");
+					}
+				})
+				
 			}
 			 			
 			
@@ -163,4 +191,66 @@ function updateEvents() {
 
 	})
 	
+}
+
+function updateFriendEvents() {
+	$('#FriendEvents').empty()
+	$.ajax({
+		url: "../cgi-bin/getfriendsevents.py",
+
+		data: {
+			Username: username
+		},
+
+		type: "post",
+
+		dataType: "json",
+
+		success: function(data) {
+
+			for (var i = 0; data.events[i] != null; i++) {
+
+				console.log("id: " + data.events[i]);
+				$.ajax({
+					url: "../cgi-bin/geteventinfo.py",
+
+					data: {
+						EventID: data.events[i]
+					},
+
+					type: "post",
+
+					dataType: "json",
+
+					success: function(data) {
+					
+						$('#FriendEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + data["startime"] + "</li>")
+						var $button = $("<button type='button'>Get info</button>");
+						$button.click(function() {
+							$("#dialog").empty();
+							$("#dialog").append("<p> Event: " + data["name"] + "<br> Creator: " + data["owner"] + "<br> Location: " + data["location"] + "<br> Starts At: " + data["startime"] + "<br> Ends At: " + data["endtime"] + "<br> Description: " + data["description"] + "</p>");
+							$("#dialog").dialog("open");
+						});
+
+						
+						$('#FriendEvents').append($button);
+
+					},
+
+					error: function() {
+						alert("Couldn't get event info");
+					}
+				})
+				
+			}
+			 			
+			
+		}, 
+
+		error: function() {
+			alert("Couldn't get events");
+		}
+
+
+	})
 }

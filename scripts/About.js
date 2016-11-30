@@ -1,12 +1,12 @@
-//LogIn.js//
 
-var isValid = false
-var isLoggedIn = false
+var isValid = false;
+var isLoggedIn = false;
 $(document).ready(function() {
 	var test = Cookies.get('name');
 	if (test != undefined) {
-		console.log("here")
-		window.location.href = "FirstLogin-Page.html"
+		$('#form').empty();
+		$('#Link').empty();
+		$('#form').append('<h3> Hello, ' + test + "!<h3>");
 	}
 	$('#Password').keyup(function(e) {
 		$uname = $('#Username').val();
@@ -36,26 +36,21 @@ $(document).ready(function() {
 			}
 			})
         }
-
 		
 		
 	});
 
-	$('#form').submit(function(e) {
-		//e.preventDefault();
+	$("#form").submit(function(e) {
 		check(e);
 	});
-
-
 });
 
-var check = function() {
+var check = function(e) {
 	if(!isValid) {
 		alert("Sorry, we couldn't find an account with those credentials. Please try again");
-		
+		e.preventDefault()
 	} else {
 		Cookies.set('name', $("#Username").val(), {expires: 7});
-		//window.location.href = "FirstLogin-Page.html"
 	}
 
 

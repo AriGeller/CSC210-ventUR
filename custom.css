@@ -15,6 +15,11 @@ body {
     color: white;
 }
 
+ul {
+    font-family: 'Comic-Sans';
+    color: black;
+}
+
 #content {
     padding-top: 10%;
     text-align: center;
@@ -139,4 +144,5 @@ div.panel.panel-default{
     
   
 }
+
 
