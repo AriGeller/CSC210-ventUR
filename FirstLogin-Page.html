@@ -9,7 +9,7 @@
         
         <link rel ="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="custom.css">
-        <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Alice|Fresca|Volkhov" rel="stylesheet">
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -35,7 +35,13 @@
                         <li class="active"><a href="index.html">Home<span class="sr-only">(current)</span></a></li>
                         <li><a href="about.html">About Us</a></li>
                     </ul>
+                    
+                   
                     <ul class="nav navbar-nav navbar-right">
+                        <form name="AddFriend" id="add" method="post" action="FirstLogin-Page.html">
+                            <input id="toAdd" name="toAdd" type="text" required>
+                            <button class="btn btn-default" name="SubmitAdd" id="submitAdd" type=submit>Add a friend!</button>
+                        </form>
                         <li>
                             
                                 <button class="btn btn-default" name="Log Out" id="LogOut" type=submit>Log Out</button>
@@ -48,23 +54,55 @@
     </div class="container">
         <br>
         <br>
-        <form name="ToAddEvent" id="ToAddEvent" method="get" action="Add_Event.html">
-            <button name="GoToEventPage" id="GoToEventPage" type=submit>Add Event!</button>
-        </form>    
-        <h2 id="welcome"></h2>
+        <div class ="container">
+            <div class ="row">
+                <div class = "col-sm-4">
+                    <h2 id="welcome"></h2>
+                    <h2 id = "friendsList"> Friends </h2> 
+                    <div class = "panel panel-default">
+                        <ul class="accepted" id="accepted"></ul>
+        
+                    </div>
+                    
+                </div>
+                
+                 <div class = "col-sm-4">
+                    <h2>My Events</h2>
+                    <div class = "panel panel-default">
+                        
+                        <ul class="currentEvents" id="CurrentEvents"></ul>
+                    </div>
+                    <form name="ToAddEvent" id="ToAddEvent" method="get" action="Add_Event.html">
+                        <button name="GoToEventPage" id="GoToEventPage" type=submit>Add Event!</button>
+                    </form> 
+                </div>
+                
+                <div class = "col-sm-4">
+                    <h2>Friends Events</h2>
+                    <div class = "panel panel-default">
+                        
+                        <ul class="MyEvents" id="MyEvents"></ul>
+                    </div>
+                </div>
+            </div>    
+        </div>    
+           
+      
+        
+       
+<!--
         <h3>Add a friend!</h3>  
         <form name="AddFriend" id="add" method="post" action="FirstLogin-Page.html">
             <input id="toAdd" name="toAdd" type="text" required>
             <button name="SubmitAdd" id="submitAdd" type=submit>Add!</button>
         </form>
+-->
 
 
 
-        <h2 id = "friendsList"> Friends </h2> 
-        <ul class="accepted" id="accepted"></ul>
+        
         <br>
-        <h2>Events</h2>
-        <ul class="currentEvents" id="CurrentEvents"></ul>
+
 
     </body>    
 </html>

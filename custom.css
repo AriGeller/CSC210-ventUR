@@ -7,7 +7,7 @@ form {
 }
 
 body {
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: 'Alice', sans-serif;
     background-image: url(https://hd.unsplash.com/photo-1431794062232-2a99a5431c6c);
     background-size: cover;
     background-position: center;
@@ -59,6 +59,7 @@ body > div.container > nav > div {
     text-shadow: 0 0 3px #000000, 0 0 5px #000000;
 }
 
+
 .accepted {
     color: greenyellow;
 }
@@ -85,6 +86,10 @@ label {
     color: white;
 }
 
+div.panel.panel-default{
+        height: 100px;
+        overflow-y: scroll;
+}
 
 
 @media (max-width: 1199px) {
@@ -125,4 +130,13 @@ label {
     form {
         padding-bottom: 10px;
     }
+    
+    div.panel.panel-default{
+        height: 60px;
+        width: 450px;
+        overflow-y: scroll;
+    }
+    
+  
 }
+
