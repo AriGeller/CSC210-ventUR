@@ -26,5 +26,6 @@ data['startime'] = row[2]
 data['endtime'] = row[3]
 data['location'] = row[4]
 data['description'] = row[5]
+data['guests'] = eval(row[6]) # python list of guests attending event, may return an empty list
 
 print json.dumps(data)
