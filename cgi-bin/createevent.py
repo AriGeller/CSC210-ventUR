@@ -18,7 +18,7 @@ start = form['StartTime'].value
 end = form['EndTime'].value
 location = form['Location'].value
 description = form['Description'].value
-guests = None #Don't worry about this yet
+guests = [] #Don't worry about this yet
 #privacy = form['Privacy'].value # Don't worry about this yet either
 
 conn = sqlite3.connect('events.db')
@@ -29,11 +29,11 @@ eventid = randint(0, 99999999)
 while True:
 	c.execute('SELECT name FROM events WHERE eventid = ?', [eventid])
 	if c.fetchone() is None:
-	    break
+		break
 	else:
-	    eventid = randint(0, 99999999)
+		eventid = randint(0, 99999999)
 
-c.execute('INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?)', (eventid, name, owner, start, end, location, description, guests))
+c.execute('INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?)', (eventid, name, owner, start, end, location, description, repr(guests)))
 
 conn.commit()
 conn.close()
