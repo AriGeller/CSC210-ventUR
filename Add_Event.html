@@ -15,8 +15,32 @@
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type = text/javascript src= "scripts/Event.js"></script>
+<!--
+        <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>jQuery UI Datepicker - Default functionality</title>
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+          <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+          <script>
+          $( function() {
+            $( "#datepicker" ).datepicker();
+          } );
+              
+          </script>
+-->
+            <base href="http://demos.telerik.com/kendo-ui/datetimepicker/index">
+    <style>html { font-size: 14px; font-family: Arial, Helvetica, sans-serif; }</style>
+    <title></title>
+    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.3.1118/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.3.1118/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.3.1118/styles/kendo.material.mobile.min.css" />
+
+    <script src="//kendo.cdn.telerik.com/2016.3.1118/js/jquery.min.js"></script>
+    <script src="//kendo.cdn.telerik.com/2016.3.1118/js/kendo.all.min.js"></script>
     </head>   
     <body>
+ 
         <div class="container">
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -52,16 +76,50 @@
         <input id ="EventName" type="text" placeholder="EventName" name="EventName" required>
         <br>
         <br>
-        <label for="StartTime">Start Time:</label>
-        <input id ="StartTime" type="text" required>
+
+        <label for="StartDate">Start Date and Time:</label>
+        <input id ="StartDate" style="width: 250px;"required>
+        
+            
+            
+            <script>
+                $(document).ready(function () {
+                    // create DateTimePicker from input HTML element
+                    $("#StartDate").kendoDateTimePicker({
+                        value:new Date()
+                    });
+                });
+            </script>
         <br>
         <br>
-        <label for="EndTime">End Time:</label>
-        <input id ="EndTime" type="text" required>
+        <label for="EndDate">End Date and Time :</label>
+        <input id ="EndDate" style="width: 250px;"required>
+        
+            
+            
+            <script>
+                $(document).ready(function () {
+                    // create DateTimePicker from input HTML element
+                    $("#EndDate").kendoDateTimePicker({
+                        value:new Date()
+                    });
+                });
+            </script>
+
+            <br>
+            <br>
+        
         <br>
-        <br>
+
         <label for="Location">Location:</label>
         <input id ="Location" type="text" required>
+        <script>
+            $('#Location').keyup(function() {
+                var strings = $('#StartDate').val().split(" ");
+                alert(strings[0]);
+                alert(strings[1] + strings[2]);
+            })
+        </script>
         <br>
         <br>
         <label for="Description">Description:</label>

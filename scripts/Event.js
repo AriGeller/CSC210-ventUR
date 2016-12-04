@@ -5,6 +5,12 @@ $(document).ready(function() {
 		window.location.href = "index.html"
 	})
 
+    $.datepicker.setDefaults({
+  showOn: "both",
+  buttonImageOnly: true,
+  buttonImage: "calendar.gif",
+  buttonText: "Calendar"
+});
 	$('#form').submit(function (e) {
 		$.ajax({
 			url: "../cgi-bin/createevent.py",
