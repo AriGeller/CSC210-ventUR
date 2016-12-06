@@ -146,8 +146,6 @@ function updateEvents() {
 		success: function(data) {
 
 			for (var i = 0; data.events[i] != null; i++) {
-
-				console.log("id: " + data.events[i])
 				$.ajax({
 					url: "../cgi-bin/geteventinfo.py",
 
@@ -160,8 +158,15 @@ function updateEvents() {
 					dataType: "json",
 
 					success: function(data) {
+
+						var start = data["startime"].split(" ");
+						var startDate = start[0];
+						var startTime = start[1] + " " + start[2];
+						var end = data["endtime"].split(" ");
+						var endDate = end[0];
+						var endTime = end[1] + " " + end[2];
 					
-						$('#CurrentEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + data["startime"] + "</li>")
+						$('#CurrentEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + startTime +  " on " + startDate + "</li>")
 						var $button = $("<button type='button'>Get info</button>");
 						$button.click(function() {
 							$("#dialog").empty();
@@ -210,7 +215,6 @@ function updateFriendEvents() {
 
 			for (var i = 0; data.events[i] != null; i++) {
 
-				console.log("id: " + data.events[i]);
 				$.ajax({
 					url: "../cgi-bin/geteventinfo.py",
 
@@ -223,8 +227,15 @@ function updateFriendEvents() {
 					dataType: "json",
 
 					success: function(data) {
+
+						var start = data["startime"].split(" ");
+						var startDate = start[0];
+						var startTime = start[1] + " " + start[2];
+						var end = data["endtime"].split(" ");
+						var endDate = end[0];
+						var endTime = end[1] + " " + end[2];
 					
-						$('#FriendEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + data["startime"] + "</li>")
+						$('#FriendEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + startTime + " on " + startDate + "</li>");
 						var $button = $("<button type='button'>Get info</button>");
 						$button.click(function() {
 							$("#dialog").empty();
