@@ -25,12 +25,9 @@ friend = form['friend'].value
 
 data = {}
 
-try: 	
-	insert = 'INSERT INTO %s_friends VALUES (?, ?)' % username
-	c.execute(insert, (friend, "accepted"))
-	conn.commit()
-	conn.close()
-except:
-	oops = "oops"
+insert = 'INSERT INTO %s_friends VALUES (?, ?)' % username
+c.execute(insert, (friend, "accepted"))
+conn.commit()
+conn.close()
 
 print json.dumps(data)
