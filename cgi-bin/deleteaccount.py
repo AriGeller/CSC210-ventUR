@@ -17,6 +17,8 @@ conn = sqlite3.connect('users.db')
 c = conn.cursor()
 
 c.execute('DELETE FROM users WHERE username = ?', [user])
+friends = 'DROP TABLE %s_friends' % user
+c.execute(friends)
 
 conn.commit()
 conn.close()
