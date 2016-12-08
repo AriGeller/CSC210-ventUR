@@ -19,12 +19,9 @@ print 'Content-Type: application/json\n\n'
 
 conn = sqlite3.connect('users.db')
 c = conn.cursor()
-conn.text_factory = str
 
 username = form['username'].value
 friend = form['friend'].value
-
-
 
 data = {}
 
@@ -35,7 +32,5 @@ try:
 	conn.close()
 except:
 	oops = "oops"
-
-
 
 print json.dumps(data)
