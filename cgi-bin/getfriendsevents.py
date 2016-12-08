@@ -28,10 +28,10 @@ c = conn.cursor()
 events = []
 
 for friend in friends:
-	c.execute("SELECT eventid FROM events WHERE owner = ?", [friend[0]])
-	friendevents = c.fetchall()
-	for event in friendevents:
-		events.append(event[0])
+    c.execute("SELECT eventid FROM events WHERE owner = ?", [friend[0]])
+    friendevents = c.fetchall()
+    for event in friendevents:
+        events.append(event[0])
 
 conn.close()
 data = {}
