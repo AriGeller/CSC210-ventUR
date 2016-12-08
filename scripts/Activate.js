@@ -9,12 +9,12 @@ $(function () {
 	$('#dialog').dialog({
 		autoOpen: false,
 		show: {
-			effect: "blind",
-			duration: 1000
+			effect: "clip",
+			duration: 150
 		},
 		hide: {
-			effect: "explode",
-			duration: 1000
+			effect: "fade",
+			duration: 250
 		}
 	});
 });
