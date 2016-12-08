@@ -23,7 +23,7 @@ guests = eval(c.fetchone()[0])
 
 guests.append(user)
 
-c.execute('UPDATE events SET guests = ?', repr(guests))
+c.execute('UPDATE events SET guests = ? WHERE eventid = ?', (repr(guests), eventid))
 
 conn.commit()
 conn.close()

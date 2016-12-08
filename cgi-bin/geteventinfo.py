@@ -16,16 +16,16 @@ eventid = form['EventID'].value
 conn = sqlite3.connect('events.db')
 c = conn.cursor()
 
-c.execute('SELECT name, owner, starttime, endtime, location, description FROM events WHERE eventid = ?', [eventid])
+c.execute('SELECT * FROM events WHERE eventid = ?', [eventid])
 
 data = {}
 row = c.fetchone()
-data['name'] = row[0]
-data['owner'] = row[1]
-data['startime'] = row[2]
-data['endtime'] = row[3]
-data['location'] = row[4]
-data['description'] = row[5]
-data['guests'] = eval(row[6]) # python list of guests attending event, may return an empty list
+data['name'] = row[1]
+data['owner'] = row[2]
+data['startime'] = row[3]
+data['endtime'] = row[4]
+data['location'] = row[5]
+data['description'] = row[6]
+data['guests'] = eval(row[7]) # python list of guests attending event, may return an empty list
 
 print json.dumps(data)
