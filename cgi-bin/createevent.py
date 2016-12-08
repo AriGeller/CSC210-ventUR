@@ -11,16 +11,14 @@ form = cgi.FieldStorage()
 
 print 'Content-Type: application/json\n\n'
 
-
 name = form['EventName'].value
 owner = form['Username'].value
 start = form['StartTime'].value
 end = form['EndTime'].value
 location = form['Location'].value
 description = form['Description'].value
-guests = None #Don't worry about this yet
+guests = []
 #privacy = form['Privacy'].value # Don't worry about this yet either
-
 
 conn = sqlite3.connect('events.db')
 c = conn.cursor()
