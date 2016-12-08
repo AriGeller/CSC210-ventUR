@@ -49,9 +49,10 @@ $(document).ready(function() {
 
 });
 
-var check = function() {
+var check = function(e) {
 	if(!isValid) {
 		alert("Sorry, we couldn't find an account with those credentials. Please try again");
+		e.preventDefault()
 		
 	} else {
 		Cookies.set('name', $("#Username").val(), {expires: 7});

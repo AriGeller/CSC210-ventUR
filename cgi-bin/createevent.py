@@ -5,7 +5,6 @@
 
 import cgi
 import sqlite3
-from random import randint
 import json
 
 form = cgi.FieldStorage()
@@ -18,22 +17,13 @@ start = form['StartTime'].value
 end = form['EndTime'].value
 location = form['Location'].value
 description = form['Description'].value
-guests = []
+guests = [owner]
 #privacy = form['Privacy'].value # Don't worry about this yet either
 
 conn = sqlite3.connect('events.db')
 c = conn.cursor()
 
-#This is hacky but I think it works
-eventid = randint(0, 99999999)
-while True:
-	c.execute('SELECT name FROM events WHERE eventid = ?', [eventid])
-	if c.fetchone() is None:
-		break
-	else:
-		eventid = randint(0, 99999999)
-
-c.execute('INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?)', (eventid, name, owner, start, end, location, description, repr(guests)))
+c.execute('INSERT INTO events (name, owner, starttime, endtime, location, description, guests) VALUES (?, ?, ?, ?, ?, ?, ?)', (name, owner, start, end, location, description, repr(guests)))
 
 conn.commit()
 conn.close()

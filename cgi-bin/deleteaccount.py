@@ -3,31 +3,23 @@
 # pylint: disable=C0103
 # pylint: disable=C0301
 
-
 import cgi
-import cgitb
-import sqlite3
 import json
-
-cgitb.enable()
+import sqlite3
 
 form = cgi.FieldStorage()
 
-
-
 print 'Content-Type: application/json\n\n'
+
+user = form['Username'].value
 
 conn = sqlite3.connect('users.db')
 c = conn.cursor()
 
-username = form['username'].value
-friend = form['friend'].value
+c.execute('DELETE FROM users WHERE username = ?', [user])
 
-data = {}
-
-insert = 'INSERT INTO %s_friends VALUES (?, ?)' % username
-c.execute(insert, (friend, "accepted"))
 conn.commit()
 conn.close()
 
+data = {}
 print json.dumps(data)
