@@ -21,7 +21,8 @@ c.execute('SELECT guests FROM events WHERE eventid = ?', [eventid])
 
 guests = eval(c.fetchone()[0])
 
-guests.append(user)
+if user not in guests:
+    guests.append(user)
 
 c.execute('UPDATE events SET guests = ? WHERE eventid = ?', (repr(guests), eventid))
 
