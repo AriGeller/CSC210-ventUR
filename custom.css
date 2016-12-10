@@ -65,9 +65,9 @@ body > div.container > nav > div {
 }
 
 
-.accepted {
-    color: greenyellow;
-}
+/*.accepted {
+    color: black;
+}*/
 
 .pending {
     color: yellow;

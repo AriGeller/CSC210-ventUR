@@ -19,11 +19,36 @@ $(function () {
 	});
 });
 
+
+
 $(document).ready(function() {
 	username = Cookies.get("name");
 	updateList();
 	updateEvents();
 	updateFriendEvents();
+
+	$("#delete").click(function() {
+		$.ajax({
+			url: '../cgi-bin/deleteaccount.py',
+
+			data: {
+				Username: username
+			},
+
+			type: "post",
+
+			dataType: "json",
+
+			success: function(data) {
+				Cookies.remove("name");
+				window.location.href = "index.html";
+			},
+
+			error: function() {
+				alert("Couldn't delete account");
+			}
+		})
+	})
 	
     
 	$("#LogOut").click(function() {
@@ -165,6 +190,7 @@ function updateEvents() {
 						var end = data["endtime"].split(" ");
 						var endDate = end[0];
 						var endTime = end[1] + " " + end[2];
+						var id = data['ID'];
 					
 						$('#CurrentEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + startTime +  " on " + startDate + "</li>")
 						var $button = $("<button type='button'>Get info</button>");
@@ -176,6 +202,31 @@ function updateEvents() {
 
 						
 						$('#CurrentEvents').append($button);
+
+						var $delButton = $("<button type='button'>Delete</button>");
+						$delButton.click(function() {
+							$.ajax({
+								url: "../cgi-bin/deleteevent.py",
+
+								data: {
+									EventID: id
+								},
+
+								type: "post",
+
+								dataType: "json",
+
+								success: function(data) {
+									location.reload();
+								},
+
+								error: function() {
+									alert("Couldn't delete event");
+								}
+							})
+						});
+
+						$('#CurrentEvents').append($delButton);
 
 					},
 

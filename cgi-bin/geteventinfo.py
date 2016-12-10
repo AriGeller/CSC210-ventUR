@@ -20,6 +20,7 @@ c.execute('SELECT * FROM events WHERE eventid = ?', [eventid])
 
 data = {}
 row = c.fetchone()
+data['ID'] = row[0]
 data['name'] = row[1]
 data['owner'] = row[2]
 data['startime'] = row[3]

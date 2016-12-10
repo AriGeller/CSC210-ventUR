@@ -20,7 +20,11 @@ getFriends = "SELECT username FROM %s_friends" % username
 
 c.execute(getFriends)
 
+
 friends = c.fetchall()
+
+
+
 
 data = {}
 data['friends'] = friends
