@@ -23,10 +23,8 @@ guests = eval(c.fetchone()[0])
 
 if user in guests:
     guests.remove(user)
-
-c.execute('UPDATE events SET guests = ? WHERE eventid = ?', (repr(guests), eventid))
-
-conn.commit()
+    c.execute('UPDATE events SET guests = ? WHERE eventid = ?', (repr(guests), eventid))
+    conn.commit()
 conn.close()
 
 data = {}
