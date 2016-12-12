@@ -18,7 +18,8 @@ start = form['StartTime'].value
 end = form['EndTime'].value
 location = form['Location'].value
 description = form['Description'].value
-guests = None #Don't worry about this yet
+guests = []
+guests.append(owner)
 #privacy = form['Privacy'].value # Don't worry about this yet either
 
 

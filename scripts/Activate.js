@@ -191,12 +191,13 @@ function updateEvents() {
 						var endDate = end[0];
 						var endTime = end[1] + " " + end[2];
 						var id = data['ID'];
+						console.log(data['guests'])
 					
 						$('#CurrentEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + startTime +  " on " + startDate + "</li>")
 						var $button = $("<button type='button'>Get info</button>");
 						$button.click(function() {
 							$("#dialog").empty();
-							$("#dialog").append("<p> Event: " + data["name"] + "<br> Location: " + data["location"] + "<br> Starts At: " + data["startime"] + "<br> Ends At: " + data["endtime"] + "<br> Description: " + data["description"] + "</p>");
+							$("#dialog").append("<p> Event: " + data["name"] + "<br> Location: " + data["location"] + "<br> Starts At: " + data["startime"] + "<br> Ends At: " + data["endtime"] + "<br> Description: " + data["description"] + "<br> Guest List: " + data["guests"] + "</p>");
 							$("#dialog").dialog("open");
 						});
 
@@ -217,7 +218,7 @@ function updateEvents() {
 								dataType: "json",
 
 								success: function(data) {
-									location.reload();
+									window.location.href = "./FirstLogin-Page.html";
 								},
 
 								error: function() {
@@ -285,17 +286,46 @@ function updateFriendEvents() {
 						var end = data["endtime"].split(" ");
 						var endDate = end[0];
 						var endTime = end[1] + " " + end[2];
+						var id = data["ID"];
 					
 						$('#FriendEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + startTime + " on " + startDate + "</li>");
 						var $button = $("<button type='button'>Get info</button>");
 						$button.click(function() {
 							$("#dialog").empty();
-							$("#dialog").append("<p> Event: " + data["name"] + "<br> Creator: " + data["owner"] + "<br> Location: " + data["location"] + "<br> Starts At: " + data["startime"] + "<br> Ends At: " + data["endtime"] + "<br> Description: " + data["description"] + "</p>");
+							$("#dialog").append("<p> Event: " + data["name"] + "<br> Creator: " + data["owner"] + "<br> Location: " + data["location"] + "<br> Starts At: " + data["startime"] + "<br> Ends At: " + data["endtime"] + "<br> Description: " + data["description"] + "<br> Guest List: " + data["guests"] + "</p>");
 							$("#dialog").dialog("open");
 						});
 
+
+
 						
 						$('#FriendEvents').append($button);
+
+						var $joinButton = $("<button type='button'>Join</button>");
+						$joinButton.click(function() {
+							$.ajax({
+								url: "../cgi-bin/joinevent.py",
+
+								data: {
+									eventid: id,
+									username: username
+
+								},
+
+								type: "post",
+
+								dataType: "json",
+
+								success: function(data) {
+									window.location.href = "./FirstLogin-Page.html"
+								},
+
+								error: function() {
+								}
+							})
+						});
+
+						$('#FriendEvents').append($joinButton);
 
 					},
 
