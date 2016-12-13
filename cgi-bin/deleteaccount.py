@@ -22,7 +22,7 @@ c.execute(select)
 friends = c.fetchall()
 for friend in friends:
     delete = 'DELETE FROM %s_friends WHERE username = ?' % friend[0]
-    c.execute(delete, user)
+    c.execute(delete, [user])
 friends = 'DROP TABLE %s_friends' % user
 c.execute(friends)
 
