@@ -15,10 +15,14 @@ body {
     color: white;
 }
 
+body.creator {
+    padding-top: 50px;
+}
 ul {
     font-family: 'Comic-Sans';
     color: black;
 }
+
 
 #content {
     padding-top: 10%;
@@ -92,7 +96,7 @@ label {
 }
 
 div.panel.panel-default{
-        height: 100px;
+        height: 150px;
         overflow-y: scroll;
 }
 
