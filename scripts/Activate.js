@@ -191,7 +191,7 @@ function updateEvents() {
 						var endDate = end[0];
 						var endTime = end[1] + " " + end[2];
 						var id = data['ID'];
-						console.log(data['guests'])
+						
 					
 						$('#CurrentEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + startTime +  " on " + startDate + "</li>")
 						var $button = $("<button type='button'>Get info</button>");
@@ -287,6 +287,7 @@ function updateFriendEvents() {
 						var endDate = end[0];
 						var endTime = end[1] + " " + end[2];
 						var id = data["ID"];
+						var joined = false;
 					
 						$('#FriendEvents').append("<li>" + data["name"] + " at " + data["location"] + " starts at " + startTime + " on " + startDate + "</li>");
 						var $button = $("<button type='button'>Get info</button>");
@@ -300,32 +301,69 @@ function updateFriendEvents() {
 
 						
 						$('#FriendEvents').append($button);
+						for (var user of data['guests']) {
+							if (user == username) {
+								joined = true;
+							}
+						}
+						
 
-						var $joinButton = $("<button type='button'>Join</button>");
-						$joinButton.click(function() {
-							$.ajax({
-								url: "../cgi-bin/joinevent.py",
+						if (!joined) {
+							var $joinButton = $("<button type='button'>Join</button>");
+							$joinButton.click(function() {
+								$.ajax({
+									url: "../cgi-bin/joinevent.py",
 
-								data: {
-									eventid: id,
-									username: username
+									data: {
+										eventid: id,
+										username: username
 
-								},
+									},
 
-								type: "post",
+									type: "post",
 
-								dataType: "json",
+									dataType: "json",
 
-								success: function(data) {
-									window.location.href = "./FirstLogin-Page.html"
-								},
+									success: function(data) {
+										window.location.href = "./FirstLogin-Page.html"
+									},
 
-								error: function() {
-								}
-							})
-						});
+									error: function() {
+									}
+								})
+							});
 
-						$('#FriendEvents').append($joinButton);
+							$('#FriendEvents').append($joinButton);
+
+						} else {
+							var $leaveButton = $("<button type='button'>Leave</button>");
+							$leaveButton.click(function() {
+								$.ajax({
+									url: "../cgi-bin/leaveevent.py",
+
+									data: {
+										eventid: id,
+										username: username
+
+									},
+
+									type: "post",
+
+									dataType: "json",
+
+									success: function(data) {
+										window.location.href = "./FirstLogin-Page.html";
+									},
+
+									error: function() {
+										alert("oops");
+									}
+								})
+							});
+
+							$('#FriendEvents').append($leaveButton);
+						}
+						
 
 					},
 
